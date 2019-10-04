@@ -11,12 +11,12 @@ def colour_format():
     probability = pd.read_csv('export_dataframe.csv')
     cols = list(probability)
     v = probability.values
-    # categories_blue_to_red = np.array(['191970', '4169E1', '6495ED', 'DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
-    # code_blue_to_red = np.searchsorted([0.15, 0.3, 0.47, 0.54, 0.7, 0.85,  1], v.ravel(), side='left').reshape(v.shape)
-    # colours = pd.DataFrame(categories_blue_to_red[code_blue_to_red], probability.index, probability.columns)
-    categories_just_red = np.array(['DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
-    code_just_red = np.searchsorted([0.49, 0.7, 0.85, 1], v.ravel(), side='left').reshape(v.shape)
-    colours = pd.DataFrame(categories_just_red[code_just_red], probability.index, probability.columns)
+    categories_blue_to_red = np.array(['191970', '4169E1', '6495ED', 'DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
+    code_blue_to_red = np.searchsorted([0.15, 0.3, 0.47, 0.54, 0.7, 0.85,  1], v.ravel(), side='left').reshape(v.shape)
+    colours = pd.DataFrame(categories_blue_to_red[code_blue_to_red], probability.index, probability.columns)
+    # categories_just_red = np.array(['DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
+    # code_just_red = np.searchsorted([0.49, 0.7, 0.85, 1], v.ravel(), side='left').reshape(v.shape)
+    # colours = pd.DataFrame(categories_just_red[code_just_red], probability.index, probability.columns)
     return render_template('test.html', probability=probability, hex_codes=colours, cols=cols)
 
 
