@@ -1,25 +1,25 @@
 <head>
-    <style>
+  <style>
         table {border-collapse: collapse}
         td {border: 1px solid}
     </style>
 </head>
-
-<table>
+<body>
+  <table>
     <tr>
-        {% for col_name in cols %}
-            <td>{{col_name}}</td>
-        {% endfor %}
+      {% for col_name in cols %}
+        <td>{{col_name}}</td>
+      {% endfor %}
     </tr>
-{% for index, row in probability.iterrows() %}
-	{% set outer_loop = loop %}
-	<tr>
-	{% for col_name in cols %}
-		<td style='background-color: #{{hex_codes[col_name][index]}}'>
-			{{row[col_name]}}
-		</td>
-	{% endfor %}
-	</tr>
-{% endfor %}
-</table>
-hiiiiiiii
+    {% for index, row in probability.iterrows() %}
+    {% set outer_loop = loop %}
+    <tr>
+      {% for col_name in cols %}
+      <td style='background-color: #{{hex_codes[col_name][index]}}'>
+        {{row[col_name]}}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</body>
