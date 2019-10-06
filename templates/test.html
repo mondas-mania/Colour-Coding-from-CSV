@@ -11,7 +11,7 @@
         <td>{{col_name}}</td>
       {% endfor %}
     </tr>
-    {% for index, row in probability.iterrows() %}
+    {% for index, row in values.iterrows() %}
     {% set outer_loop = loop %}
     <tr>
       {% for col_name in cols %}

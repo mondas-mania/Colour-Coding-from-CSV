@@ -8,16 +8,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def colour_format():
-    probability = pd.read_csv('export_dataframe.csv')
+    probability = pd.read_csv('probability_dataframe.csv')
+    values = pd.read_csv('real_values_dataframe.csv')
     cols = list(probability)
     v = probability.values
-    categories_blue_to_red = np.array(['191970', '4169E1', '6495ED', 'DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
-    code_blue_to_red = np.searchsorted([0.15, 0.3, 0.47, 0.54, 0.7, 0.85,  1], v.ravel(), side='left').reshape(v.shape)
-    colours = pd.DataFrame(categories_blue_to_red[code_blue_to_red], probability.index, probability.columns)
-    # categories_just_red = np.array(['DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
-    # code_just_red = np.searchsorted([0.49, 0.7, 0.85, 1], v.ravel(), side='left').reshape(v.shape)
-    # colours = pd.DataFrame(categories_just_red[code_just_red], probability.index, probability.columns)
-    return render_template('test.html', probability=probability, hex_codes=colours, cols=cols)
+    # categories_blue_to_red = np.array(['191970', '4169E1', '6495ED', 'DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
+    # code_blue_to_red = np.searchsorted([0.15, 0.3, 0.47, 0.54, 0.7, 0.85,  1], v.ravel(), side='left').reshape(v.shape)
+    # colours = pd.DataFrame(categories_blue_to_red[code_blue_to_red], probability.index, probability.columns)
+    categories_just_red = np.array(['DCDCDC', 'CD5C5C', 'B22222', '8B0000'])
+    code_just_red = np.searchsorted([0.49, 0.7, 0.85, 1], v.ravel(), side='left').reshape(v.shape)
+    colours = pd.DataFrame(categories_just_red[code_just_red], probability.index, probability.columns)
+    return render_template('test.html', values=values, hex_codes=colours, cols=cols)
 
 
 def get_random_values():
@@ -30,7 +31,7 @@ def get_random_values():
         row = [x / 100 for x in row]
         matrix.append(row)
     dataframe = pd.DataFrame(matrix, columns=col_list)
-    dataframe.to_csv(r'.\export_dataframe.csv', index=None, header=True)
+    dataframe.to_csv(r'probability_dataframe.csv', index=None, header=True)
     # return dataframe
 
 

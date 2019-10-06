@@ -1,7 +1,8 @@
 # ML-Stuff  
-Export data to csv from dataframe:  
+Export probabilities and real data to csv from dataframe:  
 ```
-    dataframe.to_csv(r'.\export_dataframe.csv', index=None, header=True)  
+    probabilities_df.to_csv(r'probability_dataframe.csv', index=None, header=True)  
+    real_values_df.to_csv(r'real_values_dataframe.csv', index=None, header=True)
 ```
 (if the file name is changed then need to edit that when reading in the csv in line 11)  
 Run test.py (in Pycharm ideally, otherwise with suitable virtual env set up) and open the browser at  whatever address it gives you, probably http://127.0.0.1:5000/  
